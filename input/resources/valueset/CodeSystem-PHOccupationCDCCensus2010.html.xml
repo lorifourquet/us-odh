@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet
+    xmlns="http://hl7.org/fhir">
+    <id value="CodeSystem-PHOccupationCDCCensus2010.html"/>
+    <meta>
+        <versionId value="4"/>
+        <lastUpdated value="2020-09-23T03:40:18.334+00:00"/>
+        <source value="#WzqCoN9k143zyIeG"/>
+    </meta>
+    <url value="https://phinvads.cdc.gov/vads/ViewValueSet.action?oid=2.16.840.1.114222.4.11.7186"/>
+    <version value="1"/>
+    <name value="PHVS_Occupation_CDC_Census2010"/>
+    <title value="Occupation CDC Census 2010"/>
+    <status value="draft"/>
+    <description value="2010 Occupation coding system used by CDC (NIOSH &amp; NCHS) for coding occupation text. Occupation describes a set of activities or tasks that individuals are paid to perform or, if unpaid, define a person’s contribution to a household/family business/community. This code system includes 2010 U.S. Census Bureau occupation codes with modifications made by CDC for unpaid workers and military occupations. The 2010 Census occupation categories are based on the 2010 BLS Standard Occupational Classification (SOC) system. The PH_Industry_CDC_Census2010 code system should be used in conjunction with this occupation code system when coding both industry and occupation. For more information and instructions on using this coding system, see the instruction manual for CDC-Census I&amp;O coding at: http://www.cdc.gov/niosh/topics/coding/"/>
+</ValueSet>

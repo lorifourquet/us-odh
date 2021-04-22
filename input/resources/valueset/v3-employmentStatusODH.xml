@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet
+    xmlns="http://hl7.org/fhir">
+    <id value="v3-employmentStatusODH"/>
+    <meta>
+        <versionId value="5"/>
+        <lastUpdated value="2020-09-23T03:32:33.280+00:00"/>
+        <source value="#RlUIuwhKBsS0etxR"/>
+    </meta>
+    <url value="http://terminology.hl7.org/ValueSet/v3-employmentStatusODH"/>
+    <version value="2.0.0"/>
+    <name value="EmploymentStatusODH"/>
+    <title value="EmploymentStatusODH"/>
+    <status value="draft"/>
+    <description value="Concepts representing whether a person does or does not currently have a job or is not currently in the labor pool seeking employment."/>
+</ValueSet>

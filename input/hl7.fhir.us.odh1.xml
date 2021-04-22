@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ImplementationGuide
+    xmlns="http://hl7.org/fhir">
+    <id value="hl7.fhir.us.odh1"/>
+    <meta>
+        <versionId value="79"/>
+        <lastUpdated value="2021-04-15T19:36:52.530+00:00"/>
+        <source value="#jiJRzxfFuW6MWtGg"/>
+    </meta>
+    <url value="http://hl7.org/fhir/us/odh/ImplementationGuide/hl7.fhir.us.odh1"/>
+    <version value="1.1"/>
+    <name value="HL7_FHIR_Profile_Occupational_Data_for_Health_ODH_Release_1_1_Standard_for_Trial_Use"/>
+    <title value="HL7 FHIR Profile: Occupational Data for Health (ODH), Release 1.1 (Standard for Trial Use)"/>
+    <status value="draft"/>
+    <date value="2020-09-25T00:00:00.000Z"/>
+    <publisher value="HL7 International Public Health Work Group"/>
+    <contact>
+        <name value="HL7 International - Public Health"/>
+        <telecom>
+            <system value="url"/>
+            <value value="http://www.hl7.org/Special/committees/pher"/>
+        </telecom>
+    </contact>
+    <description value="**HL7 FHIR Profile: Occupational Data for Health (ODH), Release 1.1 (Standard for Trial Use)**&#xA;&#xA;This Implementation Guide is a reconciled version, containing changes in response to comments received in the Sept. 2018 ballot. It has been updated to FHIR R4.0.1.&#xA;&#xA;**Introduction and Guidance**&#xA;&#xA;This Implementation Guide (IG) contains profiles to implement support for Occupational Data for Health (ODH). ODH describes structured work information primarily designed to facilitate clinical care, including population health and value-based care. ODH also can be used to support public health reporting. ODH is not designed to support billing activities. &#xA;This set of FHIR profiles is specified as a composition resource, but it is not intended to be used as a stand-alone composition. Rather, the desired content should be included in broader IGs and available as a response to requests for ODH information. Some use cases may leverage only a subset of the ODH profiles, and these should be specified within those work products. For instance, in the Vital Records Death Reporting (VRDR) IG, the data requirements for work information are limited to  those in the Usual Work profile.&#xA;While this profile is specified for the US Realm, the design is intended to also support international needs. Three of the referenced value sets—Occupation, Industry, and Supervisory Level— are necessarily US specific. The remaining three value sets—Work Schedule, Employment Status, and Work Classification—use international concepts. Input is requested regarding whether these should be specified as ‘extensible’, ‘required’ (using ‘text only’ where a concept does not yet exist such as a new occupation), or as an ‘example’ for those US specific concepts.&#xA;&#xA;**Background**&#xA;&#xA;The majority of adults in the U.S. spend more than half their waking hours at work. Therefore, health and work are inextricably inter-related. For example, the management of chronic conditions requires taking the patient’s work environment into consideration. Work-related conditions are often first brought to the attention of a primary care provider. Some conditions related to exposure to hazards in the workplace can have a long latency, requiring knowledge of a person’s work history for recognition, diagnosis, and treatment. The recognition of new conditions related to previously unknown workplace hazards has often come from astute clinicians, which requires knowledge of the patient’s work. ONC has indicated recognition of the value of work information for health care.&#xA;The incorporation of ODH into Electronic Health Records (EHRs) and other health IT systems presents an opportunity to improve health in relation to work. ODH provides a structure and standardization for work information that can be used across systems to take advantage of system tools for clinical decision support, population health, and public health. Research has been conducted and guidance is available to support clinicians, and the use of ODH by health IT systems can support identification of patients that would benefit the most from this knowledge.&#xA;&#xA;**Scope**&#xA;&#xA;The Occupational Data for Health (ODH) FHIR IG covers information about a patient’s work, including some voluntary work, or a patient’s household members’ work. ODH is designed for the social history section of a medical record, to facilitate clinical care in multiple disciplines and delivery environments. ODH can be used for clinical decision support, population health activities and value-based care, and public health reporting. The scope of the work information in ODH includes:&#xA;&#xA;•	Employment Status&#xA;&#xA;•	Retirement Date&#xA;&#xA;•	Combat Zone Period&#xA;&#xA;•	Past or Present Job for the patient or a household member, which includes:&#xA;		&#xA;		o	Past or Present Job Occupation&#xA;		&#xA;		o	Past or Present Job Industry&#xA;		&#xA;		o	Work Classification&#xA;		&#xA;		o	Work Schedule, which includes:&#xA;				&#xA;				- Weekly Work Days&#xA;				&#xA;				- Daily Work Hours&#xA;		&#xA;		o	Job Duty&#xA;		&#xA;		o	Occupational Hazard&#xA;		&#xA;		o	Employer name&#xA;		&#xA;		o	Employer address&#xA;		&#xA;		o	Related Subject (when it is Past or Present Job of a household member of the person)&#xA;		&#xA;		o	Start/End Dates&#xA;&#xA;•	Usual Work of the patient or a household member, which includes:&#xA;		&#xA;		o	Usual Occupation&#xA;		&#xA;		o	Usual Industry&#xA;		&#xA;		o	Usual Occupation Duration&#xA;		&#xA;		o	Related Subject (when it is Usual Work of a household member of the person)&#xA;		&#xA;		o	Start Date&#xA;&#xA;**Known Issues and Limitations**&#xA;&#xA;This IG includes more extensive occupational data than typically collected in current systems. The content and structure of this IG is intended to inform clinical care, support population health, and contribute to public health activities. While there may be some overlap with administrative and billing information maintained by some systems, the information in this IG is not designed to support billing and administrative needs.&#xA;While multiple retirement dates are supported, the retirement date is not linked to any specific job, or usual occupation.&#xA;&#xA;**Credits**&#xA;&#xA;Co-Editor:&#xA;Lori Reed-Fourquet&#xA;e-HealthSign, LLC&#xA;lfourquet@ehealthsign.com&#xA;&#xA;Co-Editor:&#xA;Rob Hausam&#xA;Hausam Consulting&#xA;rob@hausamconsulting.com&#xA;&#xA;Co-Editor:&#xA;Mark Kramer&#xA;MITRE Corporation&#xA;mkramer@mitre.org&#xA;&#xA;This set of FHIR profiles was produced and developed through the efforts of a project of the National Institute of Occupational Safety and Health (NIOSH), the U.S. federal agency responsible for conducting research and making recommendations for the prevention of work-related injury and illness. NIOSH is a part of the U.S. Centers for Disease Control and Prevention (CDC). NIOSH consulted stakeholders in clinical care, public health, health IT, health informatics and  U.S. government agencies to develop ODH. The HL7® Public Health and Emergency Response Work Group sponsored development of this set of FHIR profiles. Co-sponsoring HL7® Work Groups were Orders and Observations (OO), Patient Administration (PA), and Clinical Quality Initiative (CQI).&#xA;The following individuals provided subject matter expertise for this set of FHIR profiles: Genevieve Barkocy Luensman, NIOSH; Eileen Storey, Professional Services Partners, formerly NIOSH; Margaret S. Filios, NIOSH; Christina Socias-Morales, NIOSH; Lauren Brewer, NIOSH; Barbara Wallace, Professional Services Partners.&#xA;&#xA;**Authors**&#xA;&#xA;Name	Email/URL&#xA;HL7 International - Public Health	http://www.hl7.org/Special/committees/pher"/>
+    <jurisdiction>
+        <coding>
+            <system value="urn:iso:std:iso:3166"/>
+            <code value="US"/>
+            <display value="United States of America"/>
+        </coding>
+        <text value="United States of America"/>
+    </jurisdiction>
+    <copyright value="©2020+ HL7 International Public Health Work Group. Package hl7.fhir.us.odh#1.0.0 based on FHIR 4.0.1. Generated 2020-01-08.&#xA;Links: Home | QA Report | Search | Version History external | CC0 external | Propose a change external "/>
+    <packageId value="hl7.fhir.us.odh1"/>
+    <fhirVersion value="4.0.1"/>
+    <dependsOn id="hl7fhiruscore">
+        <uri value="http://hl7.org/fhir/us/core"/>
+        <packageId value="hl7.fhir.us.core"/>
+        <version value="3.0.0"/>
+    </dependsOn>
+    <dependsOn id="uscdcphinvads">
+        <uri value="http://fhir.org/packages/us.cdc.phinvads/ImplementationGuide/us.cdc.phinvads"/>
+        <packageId value="us.cdc.phinvads"/>
+        <version value="0.7.0"/>
+    </dependsOn>
+    <definition>
+        <grouping id="primary-profiles">
+            <name value="Primary Profiles "/>
+        </grouping>
+        <resource>
+            <reference>
+                <reference value="Bundle/b2c7e3a8-e09a-4fbb-bf5c-595dc2770df6"/></reference>
+            <exampleBoolean value="true"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="ValueSet/NamingSystem-naics.html"/></reference>
+            <description value="Concepts describing the kind of business that compensates the person for work (e.g., wages, training) or assigns work to a volunteer, as reported by the person. The kind of business is determined based on the primary business activity conducted by the company, organization, or individual (for those who are self-employed), or, for a military position, the self-reported branch of service. The value set was created by coding the NAICS index terms, which are relatable to the general public, to facilitate collection and validation by patients. A downloadable file available from the PHIN VADS ODH Hot Topics section is structured to support computer-assisted searching of this value set. The file also contains a crosswalk from the concepts in this value set to Occupation_CDC_Census value set concepts."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="ValueSet/CodeSystem-soc.html"/></reference>
+            <description value="Concepts describing a person's self-reported type of work, i.e., the set of activities or tasks that the person is paid to perform or, if unpaid, the person's contribution to a household/family business/community. The value set was created by coding the O*NET-SOC alternate titles, which are relatable to the general public, to facilitate collection and validation by patients. A downloadable file available from the PHIN VADS ODH Hot Topics section is structured to support computer-assisted searching of this value set. The file also contains a crosswalk from the concepts in this value set to Occupation_CDC_Census value set concepts."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-AccessionIdentifier"/>
+                <display value="Accession Identifier"/>
+            </reference>
+            <name value="Accession Identifier"/>
+            <description value="Identifier assigned by the lab"/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-ActionRequest"/>
+                <display value="Action Request"/>
+            </reference>
+            <name value="Action Request"/>
+            <description value="Abstract class representing a request for any type of action to be performed."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-ActionStatement"/>
+                <display value="Action Statement"/>
+            </reference>
+            <name value="Action Statement"/>
+            <description value="Abstract class representing any type of action or event."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-datatype-AnatomicalOrientation-extension"/>
+                <display value="Anatomical Orientation"/>
+            </reference>
+            <name value="Anatomical Orientation"/>
+            <description value="AnatomicalOrientation of the body location, if needed to distinguish from a similar location in another orientation.&#xA;The orientation element is part of BodyLocation, a flexible structure that allows the location to be determined by a single code, or a code plus laterality and/or orientation. The body location can also be specified in relation to one or more body landmarks. SNOMED CT is used in all cases.&#xA;&#xA;* Code only: The code should include (precoordinate) laterality and/orientation to the degree necessary to completely specify the body location.&#xA;* Code plus laterality and/or orientation: The basic code augmented by codes specifying the body side and/or anatomical orientation.&#xA;* Relation to landmark: The location relative to a landmark is specified by:&#xA;1. Establishing the location and type of landmark using a body site code and optional laterality/orientation, and&#xA;2. Specifying the direction and distance from the landmark to the body location.&#xA;&#xA;Note that BodyLocation is a data type (a reusable structure), not a stand-alone entity. The concept is similar to how a postal address can apply to a person, location, or organization. This contrasts with FHIR's stand-alone BodySite (aka BodyStructure in r4) which 'is not ... intended for describing the type of anatomical location but rather a specific body site on a specific patient' (FHIR 3.5)."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-Annotation-extension"/>
+                <display value="Annotation"/>
+            </reference>
+            <name value="Annotation"/>
+            <description value="An added or follow-up note, often after the fact, that contains metadata about who made the statement and when."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-BasedOn-extension"/>
+                <display value="Based On"/>
+            </reference>
+            <name value="Based On"/>
+            <description value="The proposal, order, or plan that is partly or wholly fulfilled by this item."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-CareContext-extension"/>
+                <display value="Care Context"/>
+            </reference>
+            <name value="Care Context"/>
+            <description value="The encounter or episode of care"/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-datatype-Category-extension"/>
+                <display value="Category"/>
+            </reference>
+            <name value="Category"/>
+            <description value="The general type or class of this item."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-datatype-Code-extension"/>
+                <display value="Code"/>
+            </reference>
+            <name value="Code"/>
+            <description value="The main type identifier for a lab, procedure, condition, etc., usually drawn from a controlled vocabulary."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/odh-CombatZonePeriod"/>
+                <display value="Combat Zone Period"/>
+            </reference>
+            <name value="Combat Zone Period"/>
+            <description value="A Combat Zone Period Observation is a clinical statement indicating the self-reported date range(s)when a person worked in what is considered a combat zone. Both civilian workers, such as Department of Defense contractors, and military service members could have worked in combat zones. Many people who have served in the military seek care first outside of the Veterans Health Administration system. Collecting this observation can facilitate important conversations about possible related health concerns, potentially prompting referral to the Department of Veterans’ Affairs (VA)."/>
+            <exampleBoolean value="false"/>
+            <groupingId value="primary-profiles"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-Composition"/>
+                <display value="Composition"/>
+            </reference>
+            <name value="Composition"/>
+            <description value="A composition represents a set of Entries sharing common provenance, a document such as an extract from a patient record, a knowledge artifact, or a catalog definition."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-Dosage-extension"/>
+                <display value="Dosage"/>
+            </reference>
+            <name value="Dosage"/>
+            <description value="The dosage of the medication. The data structure is flexible and can describe a dosage prescribed, administered, or reported."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/odh-Employer-extension"/>
+                <display value="Employer"/>
+            </reference>
+            <name value="Employer"/>
+            <description value="A person or organization that hires the services of another. This contains the address of the employer, which might not be the work location."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/odh-EmploymentStatus"/>
+                <display value="Employment Status"/>
+            </reference>
+            <name value="Employment Status"/>
+            <description value="The self-reported current and/or historical status about a person’s economic relationship to work (e.g. having one or more jobs), including start and end dates. A person’s Employment Status could change over time, for example, a person could be employed following a period of choosing to not be in the labor force. Outside of ODH, the employment arrangement between an employer and a person (one job) has sometimes been referred to as a person’s ‘employment status.’ However, in ODH, Employment Status is used to characterize a person, Work Classification is used to characterize a job, and Retirement Date is used to characterize a person as retired."/>
+            <exampleBoolean value="false"/>
+            <groupingId value="primary-profiles"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="ValueSet/v3-employmentStatusODH"/>
+                <display value="EmploymentStatusODH"/>
+            </reference>
+            <name value="EmploymentStatusODH"/>
+            <description value="Concepts representing whether a person does or does not currently have a job or is not currently in the labor pool seeking employment."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-Endpoint"/>
+                <display value="Endpoint"/>
+            </reference>
+            <name value="Endpoint"/>
+            <description value="PractitionerRole covers the recording of the location and types of services that Practitioners are able to provide for an organization."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-ExpectedPerformanceTime-extension"/>
+                <display value="Expected Performance Time"/>
+            </reference>
+            <name value="Expected Performance Time"/>
+            <description value="When an action should be done. If the action is a series or recurs (e.g. daily blood sugar testing in the morning) then a Timing can be used to describe the periodicity."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-ExpectedPerformer-extension"/>
+                <display value="Expected Performer"/>
+            </reference>
+            <name value="Expected Performer"/>
+            <description value="Who this request is being addressed to."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-ExpectedPerformerType-extension"/>
+                <display value="Expected Performer Type"/>
+            </reference>
+            <name value="Expected Performer Type"/>
+            <description value="What type of party should carry out the testing."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-HealthcareService"/>
+                <display value="Healthcare Service"/>
+            </reference>
+            <name value="Healthcare Service"/>
+            <description value="The details of a healthcare service available at a location."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-datatype-Identifier-extension"/>
+                <display value="Identifier"/>
+            </reference>
+            <name value="Identifier"/>
+            <description value="Business identifier or external id for this resource."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="ValueSet/codesystem-industry-cdc-census-2010.html"/>
+                <display value="Industry CDC Census 2010"/>
+            </reference>
+            <name value="Industry CDC Census 2010"/>
+            <description value="2010 Industry coding system used by CDC (NIOSH &amp; NCHS) for coding industry text. Industry describes an economic/business sector comprised of businesses/ enterprises concerned with the output of a specified category of products or services (e.g., the construction industry or the agriculture industry). This industry code system includes 2007 U.S. Census Bureau industry codes and three additional codes developed by CDC for unpaid workers. The 2010 Census industry categories are based on the 2007 North American Industry Classification System (NAICS). The PH_Occupation_CDC_Census2010 code system should be used in conjunction with this industry code system when coding both industry and occupation. For more information and instructions on using this coding system, see the instruction manual for CDC-Census I&amp;O coding at: http://www.cdc.gov/niosh/topics/coding/"/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="ValueSet/fLTlR0AJ"/>
+                <display value="Job Supervisory Level or Pay Grade (ODH)"/>
+            </reference>
+            <name value="Job Supervisory Level or Pay Grade (ODH)"/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="ValueSet/CodeSystem-PHOccupationalDataForHealthODH.html"/>
+                <display value="Job Supervisory Level or Pay Grade (ODH)"/>
+            </reference>
+            <name value="Job Supervisory Level or Pay Grade (ODH)"/>
+            <description value="An indicator of responsibilities of a person's job for directing work and personnel management, as reported by the person. Pay grade is used to represent supervisory or personnel management responsibilities for U.S. military service, because it conveys similar meaning across branches of service."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-datatype-Laterality-extension"/>
+                <display value="Laterality"/>
+            </reference>
+            <name value="Laterality"/>
+            <description value="Body side of the body location, if needed to distinguish from a similar location on the other side of the body.&#xA;&#xA;The laterality element is part of BodyLocation, a flexible structure that allows the location to be determined by a single code, or a code plus laterality and/or orientation. The body location can also be specified in relation to one or more body landmarks. SNOMED CT is used in all cases.&#xA;&#xA;* Code only: The code should include (precoordinate) laterality and/orientation to the degree necessary to completely specify the body location.&#xA;* Code plus laterality and/or orientation: The basic code augmented by codes specifying the body side and/or anatomical orientation.&#xA;* Relation to landmark: The location relative to a landmark is specified by:&#xA;1. Establishing the location and type of landmark using a body site code and optional laterality/orientation, and&#xA;2. Specifying the direction and distance from the landmark to the body location.&#xA;&#xA;Note that BodyLocation is a data type (a reusable structure), not a stand-alone entity. The concept is similar to how a postal address can apply to a person, location, or organization. This contrasts with FHIR's stand-alone BodySite (aka BodyStructure in r4) which 'is not ... intended for describing the type of anatomical location but rather a specific body site on a specific patient' (FHIR 3.5)."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-MedicationCodeOrReference-extension"/>
+                <display value="Medication Code Or Reference"/>
+            </reference>
+            <name value="Medication Code Or Reference"/>
+            <description value="A choice of a medication code or reference."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-MedicationDispense"/>
+                <display value="Medication Dispense"/>
+            </reference>
+            <name value="Medication Dispense"/>
+            <description value="Indicates that a medication product has been dispensed for a named person/patient. This includes a description of the medication product (supply) provided and the instructions for administering the medication. The medication dispense is the result of a pharmacy system responding to a medication order."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-NationalProviderIdentifier"/>
+                <display value="National Provider Identifier"/>
+            </reference>
+            <name value="National Provider Identifier"/>
+            <description value="NPI: a unique 10 digit number to allow US healthcare providers to identify themselves in a standard way throughout the healthcare industry."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-Observation"/>
+                <display value="Observation"/>
+            </reference>
+            <name value="Observation"/>
+            <description value="Represents the result of evaluations (measurements, tests, or questions) that have been performed.&#xA;Observation has a value representing the result (answer), or an DataAbsentReason indicating why the value is not present. Things observed about the subject can include social and behavioral factors, subjective and objective observations, and assessments.&#xA;For an Observation, the Code describes the aspect or property of the subject being observed or measured. The Code is the 'question code' that pairs to the 'answer' contained in the Value."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="ValueSet/CodeSystem-PHOccupationCDCCensus2010.html"/>
+                <display value="Occupation CDC Census 2010"/>
+            </reference>
+            <name value="Occupation CDC Census 2010"/>
+            <description value="2010 Occupation coding system used by CDC (NIOSH &amp; NCHS) for coding occupation text. Occupation describes a set of activities or tasks that individuals are paid to perform or, if unpaid, define a person’s contribution to a household/family business/community. This code system includes 2010 U.S. Census Bureau occupation codes with modifications made by CDC for unpaid workers and military occupations. The 2010 Census occupation categories are based on the 2010 BLS Standard Occupational Classification (SOC) system. The PH_Industry_CDC_Census2010 code system should be used in conjunction with this occupation code system when coding both industry and occupation. For more information and instructions on using this coding system, see the instruction manual for CDC-Census I&amp;O coding at: http://www.cdc.gov/niosh/topics/coding/"/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/odh-OccupationalDataForHealth"/>
+                <display value="Occupational Data For Health"/>
+            </reference>
+            <name value="Occupational Data For Health"/>
+            <description value="covers information about a patient’s work, including some voluntary work, or a patient’s household members’ work. ODH is designed for the social history section of a medical record, to facilitate clinical care in multiple disciplines and delivery environments. ODH can be used for clinical decision support, population health activities and value-based care, and public health reporting. "/>
+            <exampleBoolean value="false"/>
+            <groupingId value="primary-profiles"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-datatype-OccurrenceTimeOrPeriod-extension"/>
+                <display value="Occurrence Time Or Period"/>
+            </reference>
+            <name value="Occurrence Time Or Period"/>
+            <description value="The point or period of time when the event takes place. Times can be precise (dateTime) or approximate (date). If a time period is used, and the start date or dateTime is missing, the start of the period is not known. If the end date or dateTime is missing, it means that the period is ongoing."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-Participation-extension"/>
+                <display value="Participation"/>
+            </reference>
+            <name value="Participation"/>
+            <description value="Record of someone or something involvement in an activity or event."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/odh-PastOrPresentJob"/>
+                <display value="Past Or Present Job"/>
+            </reference>
+            <name value="Past Or Present Job"/>
+            <description value="A Past or Present Occupation Observation is a clinical statement about the type of work done by a person in a job, as reported by that person. It includes a set of self-reported, related observations that remain associated with one-another to characterize the job and provide clinically-relevant information. It also can be used in a minor's record for the job(s) of people who share a home with the person (see optional related subject). A job is defined as a work situation, training position, or (potentially clinically-relevant) volunteer position held for a specified time period; for a given job, updates to Job Occupation, Past or Present Industry (Job Industry), Supervisory Level, or Employer would constitute a new job or volunteer position. A person can have more than one job at the same time and multiple jobs over time.&#xA;&#xA;Knowledge about a person's job(s) informs diagnosis and management of illness and injury; it also informs management of health in the work environment, regardless of whether a condition is work-related. While knowing about a person’s current job(s) is likely to be most important, some work-related health conditions can manifest after a long latency so a history of jobs can also provide valuable information. This set of related Job observations also can provide information for public health to locate infectious disease outbreaks and intervene to prevent further illness. Public health can also use these data to analyze work-related conditions such as silicosis, pesticide poisoning, and some types of cancer to identify Occupations, Industry sectors and Employers for whom interventions are needed to mitigate risk."/>
+            <exampleBoolean value="false"/>
+            <groupingId value="primary-profiles"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-PractitionerRole"/>
+                <display value="Practitioner Role"/>
+            </reference>
+            <name value="Practitioner Role"/>
+            <description value="PractitionerRole covers the recording of the location and types of services that Practitioners are able to provide for an organization."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-datatype-PriorityCode-extension"/>
+                <display value="Priority Code"/>
+            </reference>
+            <name value="Priority Code"/>
+            <description value="An indication of the importance of an action relative to other actions."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-ReasonCode-extension"/>
+                <display value="Reason Code"/>
+            </reference>
+            <name value="Reason Code"/>
+            <description value="The explanation or justification for the current item or action, as a code.&#xA;Reason is a string or CodeableConcept in DSTU2 but in later versions only a CodeableConcept."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-ReasonReference-extension"/>
+                <display value="Reason Reference"/>
+            </reference>
+            <name value="Reason Reference"/>
+            <description value="The justification, as reference to a condition or observation."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-datatype-RelationToLandmark-extension"/>
+                <display value="Relation To Landmark"/>
+            </reference>
+            <name value="Relation To Landmark"/>
+            <description value="The relationship between a landmark that helps determine a body location and the body location itself. The location relative to a landmark is specified by:&#xA;* Specifying the location and type of landmark using a body site code and optional laterality/orientation,&#xA;* Specifying the direction from the landmark to the body location, and&#xA;* Specifying the distance from the landmark to the body location.&#xA;&#xA;The RelationToLandmark element is part of BodyLocation, a flexible structure that allows the location to be determined by a single code, or a code plus laterality and/or orientation. The body location can also be specified in relation to one or more body landmarks. SNOMED CT is used in all cases.&#xA;&#xA;* Code only: The code should include (precoordinate) laterality and/orientation to the degree necessary to completely specify the body location.&#xA;* Code plus laterality and/or orientation: The basic code augmented by codes specifying the body side and/or anatomical orientation.&#xA;* Relation to landmark: The location relative to a landmark is specified by:&#xA;1. Establishing the location and type of landmark using a body site code and optional laterality/orientation, and&#xA;2. Specifying the direction and distance from the landmark to the body location.&#xA;&#xA;Note that BodyLocation is a data type (a reusable structure), not a stand-alone entity. The concept is similar to how a postal address can apply to a person, location, or organization. This contrasts with FHIR's stand-alone BodySite (aka BodyStructure in r4) which 'is not ... intended for describing the type of anatomical location but rather a specific body site on a specific patient' (FHIR 3.5)."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-RequestIntent-extension"/>
+                <display value="Request Intent"/>
+            </reference>
+            <name value="Request Intent"/>
+            <description value="Indicates the level of authority/intentionality associated with the request and where the request fits into the workflow chain."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-Requester-extension"/>
+                <display value="Requester"/>
+            </reference>
+            <name value="Requester"/>
+            <description value="The person or organization originating this referral"/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/odh-RetirementDate"/>
+                <display value="Retirement Date"/>
+            </reference>
+            <name value="Retirement Date"/>
+            <description value="A Date of Retirement Observation is a clinical statement about a self-reported date (at least year) that a person considers themselves to have ‘retired’. If present, the person has retired. A person can be both retired and employed; most often, a person would be retired from one job and employed in another job."/>
+            <exampleBoolean value="false"/>
+            <groupingId value="primary-profiles"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-StatementDateTime-extension"/>
+                <display value="Statement Date Time"/>
+            </reference>
+            <name value="Statement Date Time"/>
+            <description value="The point in time when the statement was created."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-Status-extension"/>
+                <display value="Status"/>
+            </reference>
+            <name value="Status"/>
+            <description value="A state that relates to the workflow or interpretation of this resource. Certain status values can modify the meaning of the resource, for example, entered-in-error. When a boolean value is used, Status of true indicates the record is active, false means inactive."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-SubjectOfRecord-extension"/>
+                <display value="Subject Of Record"/>
+            </reference>
+            <name value="Subject Of Record"/>
+            <description value="The subject of a clinical statement, often called the Patient or the Subject. The SubjectOfRecord typically identifies the clinical record in which this statement is contained. If the statement should be in John Doe's patient record, then John Doe is the subject of record. When there is no patient, the SubjectOfRecord can also be a location, group, or other entity that statement pertains to. For example, observations concerning a hospital ward would have a Location as the SubjectOfRecord.&#xA;&#xA;Note that the word 'Subject' is used here in the sense of a person or entity subjected to observations or actions, not subject as in a conceptual topic, like heart disease."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/obf-TaxIdentificationNumber"/>
+                <display value="Tax Identification Number"/>
+            </reference>
+            <name value="Tax Identification Number"/>
+            <description value="Tax identification number for the practitioner."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/odh-UsualWork"/>
+                <display value="Usual Work"/>
+            </reference>
+            <name value="Usual Work"/>
+            <description value="A Usual Occupation Observation is a clinical statement about the type of work (paid or unpaid) done by a person for the longest amount of time during his or her life, not including voluntary work. It includes a set of self-reported, related components about the work a person performed for the longest amount of time during his or her life, regardless of the person's current job and regardless of whether or not the person performed this work for a continuous time. It also can be used in a minor's record for the Usual Work of people who share a home with the person (see optional related subject). Usual Work supports recognition of new and known chronic conditions which evolve over many years and may become evident after the person is no longer performing that type of work, e.g., some respiratory conditions and cancers. These data also are used by public health entities and medical researchers to investigate the relationship between conditions and exposures at work and illnesses, causes of death, or cancer."/>
+            <exampleBoolean value="false"/>
+            <groupingId value="primary-profiles"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="ValueSet/v3-WorkClassificationODH"/>
+                <display value="WorkClassificationODH"/>
+            </reference>
+            <name value="WorkClassificationODH"/>
+            <description value="Code system of concepts representing a person's job type as defined by compensation and sector (e.g. paid vs. unpaid, self-employed vs. not self-employed, government vs. private, etc.)."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="ValueSet/v3-WorkScheduleODH"/>
+                <display value="WorkScheduleODH"/>
+            </reference>
+            <name value="WorkScheduleODH"/>
+            <description value="Describes an individual's typical arrangement of working hours for an occupation"/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="ValueSet/obf-datatype-YesNoVS"/>
+                <display value="Yes No VS"/>
+            </reference>
+            <name value="Yes No VS"/>
+            <description value="Value set indicating yes or no (values drawn from Snomed CT), equivalent to LL361-7."/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/odh-isCurrentJob"/>
+                <display value="odh is Current Job"/>
+            </reference>
+            <name value="odh is Current Job"/>
+            <exampleBoolean value="false"/>
+        </resource>
+        <page>
+            <nameUrl value="index.html"/>
+            <title value="Home Page"/>
+            <generation value="markdown"/>
+            <page>
+                <nameUrl value="history.html"/>
+                <title value="History"/>
+                <generation value="markdown"/>
+            </page>
+        </page>
+        <parameter>
+            <code value="copyrightyear"/>
+            <value value="2020+"/>
+        </parameter>
+        <parameter>
+            <code value="releaselabel"/>
+            <value value="CI Build"/>
+        </parameter>
+    </definition>
+</ImplementationGuide>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet
+    xmlns="http://hl7.org/fhir">
+    <id value="CodeSystem-PHOccupationalDataForHealthODH.html"/>
+    <meta>
+        <versionId value="2"/>
+        <lastUpdated value="2021-03-25T16:43:10.721+00:00"/>
+        <source value="#zcrfqM8INO3YVGrG"/>
+    </meta>
+    <url value="https://terminology.hl7.org/1.0.0/CodeSystem-PHOccupationalDataForHealthODH.html"/>
+    <version value="2"/>
+    <name value="PHVS_JobSupervisoryLevelorPayGrade_ODH"/>
+    <title value="Job Supervisory Level or Pay Grade (ODH)"/>
+    <status value="draft"/>
+    <description value="An indicator of responsibilities of a person's job for directing work and personnel management, as reported by the person. Pay grade is used to represent supervisory or personnel management responsibilities for U.S. military service, because it conveys similar meaning across branches of service."/>
+</ValueSet>

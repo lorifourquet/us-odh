@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet
+    xmlns="http://hl7.org/fhir">
+    <id value="fLTlR0AJ"/>
+    <meta>
+        <versionId value="1"/>
+        <lastUpdated value="2020-09-23T03:03:20.670+00:00"/>
+        <source value="#WJtzC2mrWqNK9atS"/>
+    </meta>
+    <url value="https://phinvads.cdc.gov/vads/ViewValueSet.action?oid=2.16.840.1.114222.4.11.7613"/>
+    <title value="Job Supervisory Level or Pay Grade (ODH)"/>
+    <status value="draft"/>
+</ValueSet>
